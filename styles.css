@@ -1,0 +1,44 @@
+:root {
+    --primary-color: #FDE68A;
+    --secondary-color: #F3F4F6;
+}
+
+body {
+    background-color: #e7e7e7;
+}
+
+#main-heading {
+    text-align: center;
+    text-decoration-color: black;
+}
+
+#book-form {
+    align-self: center  ;
+}
+.form-elements {
+    padding: 1rem 2rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+label {
+    color: black;
+    padding: 8px;
+    font-family: Arial;
+}
+
+.ipt {
+    box-sizing: border-box;
+}
+
+#btn-ipt {
+    text-align: center;
+    margin: 1rem 2rem;
+    border: 1px black;
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    margin: 2.5rem;
+    background-color: rgb(238, 112, 9);
+    
+    
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FavBookList</title>
+    <!-- <link href="styles.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <div class="main-div">
+        <h1 id="main-heading">My Fav Book List</h1>
+        <form action="" id="book-form">
+            <div class="form-elements">
+                <label for="title">Title :</label><br />
+                <input class="ipt" type="text" id="title">
+            </div>
+            <div class="form-elements">
+                <label for="author">Author :</label><br />
+                <input class="ipt" type="text" id="author">
+            </div>
+            <div class="form-elements">
+                <label for="isbn">ISBN :</label><br />
+                <input class="ipt" type="text" id="isbn">
+            </div>
+            <input id="btn-ipt" type="button" value="Add Book">
+        </form>
+        <div class="table-div">
+            <table id="book-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>ISBN</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="book-list"></tbody>
+            </table>
+        </div>
+    </div>
+    <!-- <script src="app.js" type="text/javascript"></script> -->
+</body>
+
+</html>
