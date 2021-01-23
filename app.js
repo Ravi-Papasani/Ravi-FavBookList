@@ -99,3 +99,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
 
 //Event: Remove a Book from the list
+//DOM Id book-list for click event
+document.querySelector('#book-list').addEventListener('click', (e) => {
+    console.log(e.target)
+});
