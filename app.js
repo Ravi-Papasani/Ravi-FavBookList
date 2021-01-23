@@ -53,6 +53,15 @@ class UI {
         list.appendChild(row);
     }
 
+
+    //method to clear the input form text fields after submit event happened
+    static clearFields(){
+        document.querySelector('#title').value ='';
+        document.querySelector('#author').value ='';
+        document.querySelector('#isbn').value ='';
+    }
+    
+
 }
 
 
@@ -82,6 +91,9 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
     //add the above book Object to UI 
     UI.addBookToList(book);
+
+    //call the UI class clearFields method
+    UI.clearFields();
 
 });
 
