@@ -45,7 +45,7 @@ class UI {
         <td>${book.author}</td>
         <td>${book.isbn}</td>
         <td>
-        <a href='#'>X</a>
+        <a href="#" class="delete">X</a>
         </td>
         `;
 
@@ -60,6 +60,20 @@ class UI {
         document.querySelector('#author').value ='';
         document.querySelector('#isbn').value ='';
     }
+
+
+    //delete book from the book-list
+    static deleteBook(el){
+        //checking if the click target has delete-book element(a href value = X)
+      if(el.classList.contains('delete')){
+          //el.(<td><a href>X</a></td>).(document.createElement('tr')).remove 
+          //a href parent = <td>. <td> parent =tr  
+          el.parentElement.parentElement.remove();
+
+      }
+    }
+
+
     
 
 }
@@ -101,5 +115,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 //Event: Remove a Book from the list
 //DOM Id book-list for click event
 document.querySelector('#book-list').addEventListener('click', (e) => {
-    console.log(e.target)
+    //console.log(e.target);
+     UI.deleteBook(e.target);
+
 });
