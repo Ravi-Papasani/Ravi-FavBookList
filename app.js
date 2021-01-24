@@ -100,6 +100,10 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     const ipt_author = document.querySelector('#author').value;
     const ipt_isbn = document.querySelector('#isbn').value;
 
+    //validating the form fields
+    if(ipt_title === '' || ipt_author === '' || ipt_isbn === '' ){
+        alert("Fill in all the field values");
+    } else {
     //Now instatiate above form value to Book constructor
     const book = new Book(ipt_title, ipt_author, ipt_isbn);
 
@@ -108,7 +112,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
     //call the UI class clearFields method
     UI.clearFields();
-
+    }  
 });
 
 
