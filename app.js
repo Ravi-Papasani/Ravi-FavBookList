@@ -76,8 +76,8 @@ class UI {
     //show text message for the UI actions 
      static showAlertMesssage(message){
         // creating div element using JS <div class="alert">Text Message</div>
-         const div = document.createElement('div');
-        // div.className = 'alert';
+        const div = document.createElement('div');
+        div.className = 'alert';
         //inserting text in the div tag
         div.appendChild(document.createTextNode(message));
         //index.html line 12
@@ -86,6 +86,9 @@ class UI {
         const form = document.querySelector("#book-form");
         //parent element container, insert div before form(right before the form ) 
          container.insertBefore(div, form);
+
+         //clear the div class text message after three seconds
+         setTimeout(()=> document.querySelector('.alert').remove(), 3000);
 
      }
 
