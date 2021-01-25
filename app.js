@@ -12,7 +12,7 @@ class Book {
 class UI {
     //displayBooks Method
     static displayBooks() {
-        const storedBooks = [{
+       /* const storedBooks = [{
                 title: 'The Alchemist',
                 author: 'Paulo Coelho',
                 isbn: '11111'
@@ -23,8 +23,12 @@ class UI {
                 isbn: '22222'
             }
         ];
+
         //books variable to store the storedBooks
-        const books = storedBooks;
+        const books = storedBooks; */
+
+        //books variable to get storedBooks
+        const books = Store.getBooks();
 
         //looping the books stored using foreach loop using array method and calling addBookToList method
         books.forEach((book) => UI.addBookToList(book));
@@ -99,6 +103,38 @@ class UI {
 
 
 //Storage class: used to store/retrive books
+class Store {
+    static getBooks(){
+        let books;
+        if(localStorage.getItem('books') === null){
+            books = []; //books list empty array if LocalStorage is null
+        } else {
+            books = JSON.parse(localStorage.getItem('books')); //parse the get books in JSON form
+        }
+        return books;
+    }
+
+    static addBook(book){
+        const books = Store.getBooks(); //getting all the stored books
+
+        books.push(book); // pushing the book item to stored books
+
+         //setting the books to array of books{using stringify method}
+        localStorage.setItem('books', JSON.stringify(books));
+    }
+
+    static removeBook(isbn){
+        const books = Store.getBooks();
+
+        books.forEach((book, index) => {
+            if(books.isbn === isbn){
+                books.splice(index, 1);
+            }
+        });
+
+        localStorage.setItem('books', JSON.stringify(books));
+    }
+}
 
 
 
@@ -130,6 +166,9 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     //add the above book Object to UI 
     UI.addBookToList(book);
 
+    //Add book to Store class
+    Store.addBook(book);
+
     //Show Message{Book added}
     UI.showAlertMesssage("Book Added Successfully")
 
@@ -143,8 +182,13 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 //DOM Id book-list for click event
 document.querySelector('#book-list').addEventListener('click', (e) => {
     //console.log(e.target);
+    //Remove book from UI 
      UI.deleteBook(e.target);
 
+     //Remove book from the Store class
+     //el.target.(<td><a href>X</a></td>).(previousElementSibling{<td>${book.isbn}</td>}).(textContent{{book.isbn} isbn value}) 
+          //a href parent = <td>. <td> previousElementSibling =<td> book.isbn 
+     Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
 
     //Show Message{Book Removed}
     UI.showAlertMesssage("Book Removed Successfully")
