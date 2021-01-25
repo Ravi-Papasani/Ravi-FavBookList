@@ -73,6 +73,22 @@ class UI {
       }
     }
 
+    //show text message for the UI actions 
+     static showAlertMesssage(message){
+        // creating div element using JS <div class="alert">Text Message</div>
+         const div = document.createElement('div');
+        // div.className = 'alert';
+        //inserting text in the div tag
+        div.appendChild(document.createTextNode(message));
+        //index.html line 12
+        const container = document.querySelector('.container')
+        //index.html line 14
+        const form = document.querySelector("#book-form");
+        //parent element container, insert div before form(right before the form ) 
+         container.insertBefore(div, form);
+
+     }
+
 
     
 
@@ -102,7 +118,8 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
     //validating the form fields
     if(ipt_title === '' || ipt_author === '' || ipt_isbn === '' ){
-        alert("Fill in all the field values");
+        //alert("Fill in all the field values");
+        UI.showAlertMesssage("Fill in all the field values");
     } else {
     //Now instatiate above form value to Book constructor
     const book = new Book(ipt_title, ipt_author, ipt_isbn);
